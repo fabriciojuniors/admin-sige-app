@@ -10,7 +10,7 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-   usuario: Usuario = {
+  usuario: Usuario = {
     id: 0,
     cpf: "",
     nome: "",
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     endereco: {
       id: 0,
       rua: "",
-      numero:0,
+      numero: 0,
       uf: "SC",
       cidade: "",
       complemento: "",
@@ -34,23 +34,25 @@ export class LoginComponent implements OnInit {
 
   error = "";
 
-  constructor(private loginService : LoginService,
-              private router : Router) { }
-
-  ngOnInit(): void {
-    
+  constructor(private loginService: LoginService,
+    private router: Router) {
+      localStorage.clear();
   }
 
-  entrar(){
+  ngOnInit(): void {
+
+  }
+
+  entrar() {
     this.loginService.login(this.usuario).toPromise()
-      .then(res => {        
+      .then(res => {
         this.usuario = res;
         this.loginService.setUsuario(this.usuario);
-        localStorage.setItem("usuario", this.usuario.id+"");
+        localStorage.setItem("usuario", this.usuario.id + "");
         this.router.navigateByUrl("dashboard");
       })
       .catch(err => {
-        this.error = err.error.mensagem;     
+        this.error = err.error.mensagem;
       })
   }
 
