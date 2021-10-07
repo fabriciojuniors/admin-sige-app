@@ -1,0 +1,235 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <strong>Usuários</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-7">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#modalUsuario">Novo Usuário</button>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <select class="form-select" name="perfil" id="perfil">
+                            <option value="T">Todos</option>
+                            <option value="A">Administrador</option>
+                            <option value="C">Cliente</option>
+                            <option value="O">Operador</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="Nome">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                                class="fas fa-search"></i></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col" style="text-align: center;">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Administrador</td>
+                            <td style="text-align: center;">
+                                <i style="margin-right: 10px;" class="fas fa-pen"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Administrador</td>
+                            <td style="text-align: center;">
+                                <i style="margin-right: 10px;" class="fas fa-pen"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Administrador</td>
+                            <td style="text-align: center;">
+                                <i style="margin-right: 10px;" class="fas fa-pen"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalUsuario" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar usuário</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- dados pessoais -->
+                <p>
+                    <a data-bs-toggle="collapse" href="#collapseDadosPessoais" class="collapse-tittle" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <i class="far fa-address-card"></i> Dados pessoais <small
+                            style="font-size: 10px;">(Adicionar)</small>
+                    </a>
+                </p>
+                <div class="collapse show" id="collapseDadosPessoais">
+                    <div class="card card-body">
+                        <div class="form-group col-md-2">
+                            <label for="id">Código</label>
+                            <input type="text" class="form-control" id="id">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="cpf">CPF</label>
+                                <input type="text" class="form-control" id="cpf">
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="nome">Data de Nascimento</label>
+                                <input type="date" name="" id="data-nascimento" class="form-control">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="sexo">Sexo</label>
+                                <select name="sexo" id="sexo" class="form-select">
+                                    <option value="#">Selecione</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> <br>
+                </div>
+                <!-- dados pessoais -->
+                
+                <!-- endereco -->
+                <p>
+                    <a data-bs-toggle="collapse" href="#collapseEndereco" class="collapse-tittle" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-map-marker-alt"></i> Endereço <small
+                            style="font-size: 10px;">(Adicionar)</small>
+                    </a>
+                </p>
+                <div class="collapse" id="collapseEndereco">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="CEP">CEP</label>
+                                <input type="text" class="form-control" id="CEP">
+                            </div>
+                            <div class="form-group col-md-7">
+                                <label for="rua">Rua</label>
+                                <input type="text" class="form-control" id="rua">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="numero">Número</label>
+                                <input type="number" name="" id="numero" class="form-control">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" class="form-control" id="complemento">
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <label for="UF">UF</label>
+                                <select class="form-select" name="UF" id="UF">
+                                    <option value="#">Selecione</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" class="form-control" id="cidade">
+                            </div>
+                        </div>
+                    </div><br>
+                </div>
+                <!-- endereco -->
+
+                <!-- acesso -->
+                <p>
+                    <a data-bs-toggle="collapse" href="#collapseAcesso" class="collapse-tittle" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-at"></i> Dados de acesso <small
+                            style="font-size: 10px;">(Adicionar)</small>
+                    </a>
+                </p>
+                <div class="collapse" id="collapseAcesso">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="nivel">Nível</label>
+                                <select name="nivel" id="nivel" class="form-select">
+                                    <option value="#">Selecione</option>
+                                    <option value="A">Administrador</option>
+                                    <option value="C">Cliente</option>
+                                    <option value="O">Operador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="" id="email" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="senha">Senha</label>
+                                <input type="text" class="form-control" id="senha">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- acesso -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal   -->
