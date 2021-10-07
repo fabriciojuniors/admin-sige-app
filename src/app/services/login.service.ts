@@ -54,7 +54,7 @@ export class LoginService {
       senha: ""
     };
 
-    if (localStorage.getItem("usuario")) {
+   /* if (localStorage.getItem("usuario")) {
       let usuarioId = localStorage.getItem("usuario");
       this.getById(usuarioId).toPromise()
         .then(res => {
@@ -63,7 +63,7 @@ export class LoginService {
         .catch(err => {
           console.log(err);
         })
-    }
+    }*/
 
   }
 
@@ -72,11 +72,19 @@ export class LoginService {
   }
 
   isAuthenticated() {
-    let usuarioId = localStorage.getItem("usuario");
+    let usuario:Usuario = JSON.parse(localStorage.getItem("usuario"));
     let isAuthenticated = false;
 
-    if(this.usuario.id > 0 || usuarioId){
+    if(usuario == null){
+      return false;
+    }
+
+    if(this.usuario.id > 0 || usuario.id > 0){
       isAuthenticated = true;
+    }
+
+    if(usuario.id > 0 && this.usuario.id == 0){
+      this.usuario = usuario;
     }
     
     return isAuthenticated;

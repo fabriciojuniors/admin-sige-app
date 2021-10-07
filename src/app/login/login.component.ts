@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit {
     email: "",
     senha: ""
   };
-
   error = "";
+  showLoading = false;
 
   constructor(private loginService: LoginService,
     private router: Router) {
-      localStorage.clear();
+    localStorage.clear();
   }
 
   ngOnInit(): void {
@@ -44,14 +44,21 @@ export class LoginComponent implements OnInit {
   }
 
   entrar() {
+    this.showLoading = true;
     this.loginService.login(this.usuario).toPromise()
       .then(res => {
-        this.usuario = res;
-        this.loginService.setUsuario(this.usuario);
-        localStorage.setItem("usuario", this.usuario.id + "");
-        this.router.navigateByUrl("dashboard");
+        this.showLoading = false;
+        this.usuario = res;       
+        if (this.usuario.nivel != "A") {
+          this.error = "Acesso negado!"
+        } else {
+          this.loginService.setUsuario(this.usuario);
+          localStorage.setItem("usuario", JSON.stringify(this.usuario));
+          this.router.navigateByUrl("dashboard");
+        }
       })
       .catch(err => {
+        this.showLoading = false;
         this.error = err.error.mensagem;
       })
   }
