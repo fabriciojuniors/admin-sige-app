@@ -10,7 +10,7 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario: Usuario = {
+  usuario = {
     id: 0,
     cpf: "",
     nome: "",
@@ -48,12 +48,12 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.usuario).toPromise()
       .then(res => {
         this.showLoading = false;
-        this.usuario = res;       
-        if (this.usuario.nivel != "A") {
+        let usuario = res;       
+        if (usuario.nivel != "A") {
           this.error = "Acesso negado!"
         } else {
-          this.loginService.setUsuario(this.usuario);
-          localStorage.setItem("usuario", JSON.stringify(this.usuario));
+          this.loginService.setUsuario(usuario);
+          localStorage.setItem("usuario", JSON.stringify(usuario));
           this.router.navigateByUrl("dashboard");
         }
       })

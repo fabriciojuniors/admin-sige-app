@@ -26,7 +26,7 @@ export class LoginService {
       cep: ""
     },
     cartoes: null,
-    nivel: "",
+    nivel: "A",
     email: "",
     senha: ""
   };
@@ -49,21 +49,10 @@ export class LoginService {
         cep: ""
       },
       cartoes: null,
-      nivel: "",
+      nivel: "A",
       email: "",
       senha: ""
     };
-
-   /* if (localStorage.getItem("usuario")) {
-      let usuarioId = localStorage.getItem("usuario");
-      this.getById(usuarioId).toPromise()
-        .then(res => {
-          this.usuario = res;
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    }*/
 
   }
 
@@ -94,7 +83,16 @@ export class LoginService {
     return this.http.get(BASE_URL + "/usuario/busca/" + id);
   }
 
-  login(usuario: Usuario): Observable<any> {
+  login(usuario): Observable<any> {
     return this.http.post(BASE_URL + "/usuario/autenticar", usuario);
   }
+
+  getPage(nivel : string, pagina: number): Observable<any>{
+    return this.http.get(BASE_URL+"/usuario/"+nivel+"?pagina="+pagina);
+  }
+
+  salvar(usuario):Observable<any>{
+    return this.http.post(BASE_URL+"/usuario", usuario);
+  }
+
 }
