@@ -1,0 +1,11 @@
+<!-- <button type="button" class="btn btn-primary" id="liveToastBtn" (click)="showToast()">Show live toast</button> -->
+<div style="position: absolute; bottom: 20px; left: 10px; z-index: 111; color: white;" class="toast bg-dark align-items-center" id="myToast"
+    role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+        <div class="toast-body">
+            <i *ngIf="showSuccess" class="fas fa-check-circle" style="color: green;"></i>
+            <i *ngIf="showWarning" class="fas fa-exclamation-triangle" style="color: red;"></i>
+            {{ mensagem }}
+        </div>
+    </div>
+</div>

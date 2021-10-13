@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ToastMessageComponent } from './shared/toast-message/toast-message.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UsuarioComponent } from './usuario/usuario.component';
     LoginComponent,
     DashboardComponent,
     MenuComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ToastMessageComponent
   ],
   imports: [
     BrowserModule,

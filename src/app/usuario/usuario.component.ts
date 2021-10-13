@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { LoginService } from '../services/login.service';
+import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
 
 @Component({
   selector: 'app-usuario',
@@ -39,7 +40,7 @@ export class UsuarioComponent implements OnInit {
   public error;
 
   @ViewChild('closeModal') closeModal: ElementRef;
-
+  @ViewChild('toast') private toast: ToastMessageComponent;
 
   constructor(private loginService: LoginService) { }
   ngOnInit(): void {
@@ -117,6 +118,7 @@ export class UsuarioComponent implements OnInit {
       .then(res => {
         this.getAll();
         this.closeModal.nativeElement.click();
+        this.toast.showToast("S", "Salvo com sucesso.");
       })
       .catch(err => {
         if(err.error.mensagem){
@@ -134,6 +136,23 @@ export class UsuarioComponent implements OnInit {
   cancelar(){
     this.limparUsuario();
     this.error = "";
+    document.getElementById("collapseEndereco").classList.remove("show");
+    document.getElementById("collapseAcesso").classList.remove("show");
+  }
+
+  excluir(usuario){
+    if(confirm("Confirma a exclusão do usuário " + usuario.nome)){
+      this.loginService.excluir(usuario.id).toPromise()
+        .then(res => {
+          this.getAll();
+          this.toast.showToast("S", "Registro excluído com sucesso");
+        })
+        .catch(err => {
+          this.toast.showToast("W", err.error.mensagem  + err.error.detalhes);
+          this.getAll();
+        })
+    }
+    
   }
 
 }

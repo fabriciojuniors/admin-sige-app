@@ -95,4 +95,8 @@ export class LoginService {
     return this.http.post(BASE_URL+"/usuario", usuario);
   }
 
+  excluir(id):Observable<any>{
+    return this.http.delete(BASE_URL+"/usuario/"+id);
+  }
+
 }
