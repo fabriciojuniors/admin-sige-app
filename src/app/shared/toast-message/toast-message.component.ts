@@ -12,6 +12,7 @@ export class ToastMessageComponent implements OnInit {
   showSuccess = false;
   showWarning = false;
   mensagem = "";
+  msgs = [];
   constructor() { }
 
   ngOnInit(): void {
@@ -20,20 +21,46 @@ export class ToastMessageComponent implements OnInit {
   }
 
   showToast(tipo, mensagem){
-    this.mensagem = mensagem;
-
+    console.log(mensagem);
+    
+    this.msgs = mensagem;
+    let icon = "";
     switch (tipo) {
       case "S":
-        this.showSuccess = true;
-        this.showWarning = false
+        icon = "<i class='fas fa-check-circle' style='color: green;'></i>";
         break;
       case "W":
-        this.showSuccess = false;
-        this.showWarning = true;
+        icon = "<i class='fas fa-exclamation-triangle' style='color: red;'></i>";
         break;
     }
 
-    this.toast.show();
+    for(let i = 0; i < mensagem.length; i++){
+
+      let dvToast = document.createElement("div");
+      //dvToast.setAttribute("style", "margin-bottom: 30px; margin-left: 5px;")
+      dvToast.setAttribute("id", "myToast-"+i);
+      dvToast.setAttribute("aria-live", "assertive");
+      dvToast.setAttribute("aria-atomic", "true");
+      dvToast.setAttribute("data-bs-delay", "5000");
+      dvToast.setAttribute("role", "alert");
+      dvToast.classList.add("toast");
+      dvToast.classList.add("bg-dark");
+      dvToast.classList.add("align-items-center");
+
+      let dbBody = document.createElement("div");
+      dbBody.classList.add("toast-body");
+      dbBody.setAttribute("style", "color: white");
+      dbBody.innerHTML = icon + "  " + mensagem[i];
+
+      dvToast.appendChild(dbBody);
+      document.getElementById("container").appendChild(dvToast);
+
+
+      let toast = document.getElementById("myToast-"+i);
+      let toastEl = new Toast(toast, {});
+      toastEl.show();
+    }
+    
   }
 
 }

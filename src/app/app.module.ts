@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ToastMessageComponent } from './shared/toast-message/toast-message.component';
+import { LocalComponent } from './local/local.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ToastMessageComponent } from './shared/toast-message/toast-message.comp
     DashboardComponent,
     MenuComponent,
     UsuarioComponent,
-    ToastMessageComponent
+    ToastMessageComponent,
+    LocalComponent
   ],
   imports: [
     BrowserModule,

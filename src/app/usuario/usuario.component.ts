@@ -38,6 +38,7 @@ export class UsuarioComponent implements OnInit {
   operacao = "Cadastrar";
   public showloading: boolean = false;
   public error;
+  public errorA = [];
 
   @ViewChild('closeModal') closeModal: ElementRef;
   @ViewChild('toast') private toast: ToastMessageComponent;
@@ -118,14 +119,25 @@ export class UsuarioComponent implements OnInit {
       .then(res => {
         this.getAll();
         this.closeModal.nativeElement.click();
-        this.toast.showToast("S", "Salvo com sucesso.");
+        this.toast.showToast("S", ["Salvo com sucesso."]);
       })
       .catch(err => {
+        console.log(err);
+        
         if(err.error.mensagem){
           this.error = err.error.mensagem;
+        }else if(err.error){
+          let erros = JSON.stringify(err.error);
+          erros = erros.split("{").join("");
+          erros = erros.split("}").join("")
+          erros = erros.split("\"").join("");
+          erros = erros.split(":").join(": ");
+          let errosA = erros.split(",");
+          this.errorA = errosA;
+          this.toast.showToast("W", this.errorA)
         }else{
           this.error = err.message;
-        }
+        }        
       })
       .finally( ()=>{
         this.showloading = false;
@@ -136,6 +148,7 @@ export class UsuarioComponent implements OnInit {
   cancelar(){
     this.limparUsuario();
     this.error = "";
+    this.errorA = [];
     document.getElementById("collapseEndereco").classList.remove("show");
     document.getElementById("collapseAcesso").classList.remove("show");
   }
@@ -145,7 +158,7 @@ export class UsuarioComponent implements OnInit {
       this.loginService.excluir(usuario.id).toPromise()
         .then(res => {
           this.getAll();
-          this.toast.showToast("S", "Registro excluído com sucesso");
+          this.toast.showToast("S", ["Registro excluído com sucesso"]);
         })
         .catch(err => {
           this.toast.showToast("W", err.error.mensagem  + err.error.detalhes);
