@@ -6,7 +6,7 @@ import { ToastMessageComponent } from '../shared/toast-message/toast-message.com
 @Component({
   selector: 'app-local',
   templateUrl: './local.component.html',
-  styleUrls: ['./local.component.css']
+  styleUrls: ['./local.component.css', '../app.component.css']
 })
 export class LocalComponent implements OnInit {
 
@@ -14,6 +14,7 @@ export class LocalComponent implements OnInit {
   paginasTotais: number;
   pagina: number;
   locais: Local[] = [];
+  showLoading = false;
   public localCE: Local = {
     id: 0,
     nome: "",
@@ -85,7 +86,7 @@ export class LocalComponent implements OnInit {
     if (!this.proximo && pagina > this.pagina) {
       return;
     }
-
+    this.showLoading = true;
     this.localService.getPage(pagina).toPromise()
       .then(res => {
         this.locais = res.content;
@@ -97,6 +98,7 @@ export class LocalComponent implements OnInit {
       .catch(err => {
         console.log(err);
       })
+      .finally(() => {this.showLoading = false})
   }
 
   salvar(){

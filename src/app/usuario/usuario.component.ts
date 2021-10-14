@@ -3,16 +3,18 @@ import { Usuario } from '../models/usuario';
 import { LoginService } from '../services/login.service';
 import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
 
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.css']
+  styleUrls: ['./usuario.component.css', '../app.component.css']
 })
 export class UsuarioComponent implements OnInit {
   public proximo: boolean = false;
   paginasTotais: number;
   pagina: number;
   usuarios: Usuario[] = [];
+  showLoadingAll = false;
   public usuarioCE : Usuario = {
     id: 0,
     cpf: "",
@@ -73,6 +75,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   getAll() {
+    this.showLoadingAll = true;
     this.loginService.getPage(this.tipo, 1).toPromise()
       .then(res => {
         this.usuarios = res.content;
@@ -83,13 +86,14 @@ export class UsuarioComponent implements OnInit {
       .catch(err => {
         console.log(err);
       })
+      .finally(() => {this.showLoadingAll = false})
   }
 
   getByPage(pagina) {    
     if(!this.proximo && pagina > this.pagina){
       return;
     }
-    
+    this.showLoadingAll = true;
     this.loginService.getPage(this.tipo, pagina).toPromise()
       .then(res => {
         this.usuarios = res.content;
@@ -101,6 +105,7 @@ export class UsuarioComponent implements OnInit {
       .catch(err => {
         console.log(err);
       })
+      .finally(() => {this.showLoadingAll = false})
   }
 
   cadastrar(){

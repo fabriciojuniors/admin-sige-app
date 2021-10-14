@@ -11,10 +11,15 @@
                 </div>
             </div>
 
-            <div style="margin-top: 10px;" *ngIf="locais.length == 0" class="alert alert-warning" role="alert">
+            <div style="margin-top: 10px;" *ngIf="locais.length == 0 && !showLoading" class="alert alert-warning"
+                role="alert">
                 Nenhum registro encontrado.
             </div>
-
+            <div class="text-center" *ngIf="showLoading">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+            </div>
             <div class="d-flex" *ngIf="locais.length > 0">
                 <table class="table table-hover">
                     <thead>
@@ -78,39 +83,40 @@
             </div>
             <div class="modal-body">
                 <div class="collapse show" id="collapseDadosPessoais">
-                   <div class="card card-body">
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label for="id">Código</label>
-                            <input type="text" id="id" name="id" [(ngModel)]="this.localCE.id" disabled
-                                class="form-control">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="id">Código</label>
+                                <input type="text" id="id" name="id" [(ngModel)]="this.localCE.id" disabled
+                                    class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label for="nome">Nome</label>
-                            <input type="text" [(ngModel)]="this.localCE.nome" class="form-control" id="nome">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="nome">Nome</label>
+                                <input type="text" [(ngModel)]="this.localCE.nome" class="form-control" id="nome">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 form-group">
-                            <label for="capacidade">Capacidade</label>
-                            <input type="number" name="capacidade" id="capacidade" class="form-control"
-                                [(ngModel)]="this.localCE.capacidade">
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <label for="capacidade">Capacidade</label>
+                                <input type="number" name="capacidade" id="capacidade" class="form-control"
+                                    [(ngModel)]="this.localCE.capacidade">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="text" [(ngModel)]="this.localCE.telefone" class="form-control"
+                                    id="telefone">
+                            </div>
                         </div>
-                        <div class="col-md-4 form-group">
-                            <label for="telefone">Telefone</label>
-                            <input type="text" [(ngModel)]="this.localCE.telefone" class="form-control" id="telefone">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="informacoesAdicionais">Informações adicionais</label>
+                                <textarea class="form-control" name="informacoesAdicionais" id="informacoesAdicionais"
+                                    [(ngModel)]="this.localCE.informacoesAdicionais"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="informacoesAdicionais">Informações adicionais</label>
-                            <textarea class="form-control" name="informacoesAdicionais" id="informacoesAdicionais"
-                                [(ngModel)]="this.localCE.informacoesAdicionais"></textarea>
-                        </div>
-                    </div>
-                   </div> <br>
+                    </div> <br>
                 </div>
                 <!-- endereco -->
                 <p>
