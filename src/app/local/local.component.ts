@@ -101,6 +101,7 @@ export class LocalComponent implements OnInit {
 
   salvar(){
     this.showloading = true;
+    if(this.localCE.endereco.uf == "#" || this.localCE.endereco.uf == "") this.localCE.endereco.uf = null
     this.localService.salvar(this.localCE).toPromise()
       .then(res => {
         this.getByPage(1);
@@ -119,7 +120,7 @@ export class LocalComponent implements OnInit {
           erros = erros.split(":").join(": ");
           let errosA = erros.split(",");
           this.errorA = errosA;
-          this.toast.showToast("W", this.errorA);
+          this.toast.showToast("W", errosA);
           
         }else{
           this.error = err.message;

@@ -21,9 +21,8 @@ export class ToastMessageComponent implements OnInit {
   }
 
   showToast(tipo, mensagem){
-    console.log(mensagem);
-    
-    this.msgs = mensagem;
+    console.log(mensagem);   
+        
     let icon = "";
     switch (tipo) {
       case "S":
@@ -33,6 +32,8 @@ export class ToastMessageComponent implements OnInit {
         icon = "<i class='fas fa-exclamation-triangle' style='color: red;'></i>";
         break;
     }
+
+    document.getElementById("container").innerHTML = "";
 
     for(let i = 0; i < mensagem.length; i++){
 
@@ -60,7 +61,8 @@ export class ToastMessageComponent implements OnInit {
       let toastEl = new Toast(toast, {});
       toastEl.show();
     }
-    
+    this.msgs = [];
+    mensagem = [];
   }
 
 }

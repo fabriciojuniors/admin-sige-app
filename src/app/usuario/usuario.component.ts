@@ -114,7 +114,10 @@ export class UsuarioComponent implements OnInit {
   }
 
   salvar(){
-    this.showloading = true;    
+    this.showloading = true;   
+    if(this.usuarioCE.endereco.uf == "#" || this.usuarioCE.endereco.uf == "") this.usuarioCE.endereco.uf = null 
+    if(this.usuarioCE.sexo == "#" || this.usuarioCE.sexo == "") this.usuarioCE.sexo = null 
+    if(this.usuarioCE.nivel == "#" || this.usuarioCE.nivel == "") this.usuarioCE.nivel = null 
     this.loginService.salvar(this.usuarioCE).toPromise()
       .then(res => {
         this.getAll();
@@ -126,6 +129,7 @@ export class UsuarioComponent implements OnInit {
         
         if(err.error.mensagem){
           this.error = err.error.mensagem;
+          this.toast.showToast("W", err.error.mensagem)
         }else if(err.error){
           let erros = JSON.stringify(err.error);
           erros = erros.split("{").join("");
