@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Local } from '../models/local';
 import { LocalService } from '../services/local.service';
 import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
+import { BASE_URL } from '../app.component';
 
 @Component({
   selector: 'app-local',
@@ -15,6 +16,7 @@ export class LocalComponent implements OnInit {
   pagina: number;
   locais: Local[] = [];
   showLoading = false;
+  URL_RELATORIO = BASE_URL + "/relatorio/locais";
   public localCE: Local = {
     id: 0,
     nome: "",
