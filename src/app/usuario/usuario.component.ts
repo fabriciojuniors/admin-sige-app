@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { BASE_URL } from '../app.component';
 import { Usuario } from '../models/usuario';
 import { LoginService } from '../services/login.service';
 import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
@@ -10,6 +11,9 @@ import { ToastMessageComponent } from '../shared/toast-message/toast-message.com
   styleUrls: ['./usuario.component.css', '../app.component.css']
 })
 export class UsuarioComponent implements OnInit {
+
+  URL_RELATORIO = `${BASE_URL}/usuario`
+
   public proximo: boolean = false;
   paginasTotais: number;
   pagina: number;
