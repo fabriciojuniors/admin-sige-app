@@ -1,0 +1,100 @@
+<app-menu></app-menu>
+<app-toast-message #toast></app-toast-message>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4>Eventos</h4>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalEventos"
+                            (click)="cadastrar()">Novo Evento</button>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-success dropdown-toggle" href="#" id="btnGroupDrop1" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"></a>
+                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="{{URL_RELATORIO}}" target="_blank">Emitir relatório</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 10px;" *ngIf="eventos.length == 0 && !showLoading" class="alert alert-warning"
+                role="alert">
+                Nenhum registro encontrado.
+            </div>
+            <div class="text-center" *ngIf="showLoading">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+            </div>
+            <div class="d-flex" *ngIf="eventos.length > 0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data/Hora</th>
+                            <th scope="col">Local</th>
+                            <th scope="col" style="text-align: center;">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+            </div>
+            <nav *ngIf="eventos.length > 0" aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item" [ngClass]="{disabled: pagina == 1}" (click)="getByPage(pagina-1)">
+                        <a class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" *ngIf="pagina > 1" (click)="getByPage(pagina-1)"> {{
+                            pagina - 1 }} </a></li>
+
+                    <li class="page-item active"><a class="page-link" (click)="getByPage(pagina)"> {{ pagina }}
+                        </a></li>
+
+                    <li class="page-item"><a class="page-link" *ngIf="proximo" (click)="getByPage(pagina+1)">
+                            {{ pagina + 1 }} </a></li>
+                    <li class="page-item" [ngClass]="{disabled: !proximo}" (click)="getByPage(pagina+1)">
+                        <a class="page-link" [ngClass]="{disabled: !proximo}">
+                            <span [ngClass]="{disabled: !proximo}">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEventos" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{operacao}} evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" #closeModal (click)=cancelar()
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>MODAL</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" (click)="cancelar()"
+                    data-bs-dismiss="modal">Cancelar</button>
+                <button [disabled]="showLoading" class="btn btn-success" type="button" (click)="salvar()">
+                    <span *ngIf="showLoading" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span>
+                    <span *ngIf="!showLoading">Salvar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal   -->

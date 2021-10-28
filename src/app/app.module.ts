@@ -11,6 +11,8 @@ import { MenuComponent } from './menu/menu.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ToastMessageComponent } from './shared/toast-message/toast-message.component';
 import { LocalComponent } from './local/local.component';
+import { ParceiroComponent } from './parceiro/parceiro.component';
+import { EventosComponent } from './eventos/eventos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LocalComponent } from './local/local.component';
     MenuComponent,
     UsuarioComponent,
     ToastMessageComponent,
-    LocalComponent
+    LocalComponent,
+    ParceiroComponent,
+    EventosComponent
   ],
   imports: [
     BrowserModule,

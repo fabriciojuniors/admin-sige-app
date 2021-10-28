@@ -1,0 +1,13 @@
+.container{
+    margin-top: 20px;
+}
+
+.collapse-tittle{
+    text-decoration:none;
+    color: black;
+}
+
+label{
+    font-size: 13px; 
+    font-weight: bold;
+}
