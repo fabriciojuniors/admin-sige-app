@@ -14,11 +14,11 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Cadastros
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" [routerLink]="['/eventos']">Eventos</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['/usuario']">Usuários/Cliente</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['/local']">Local</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['/parceiro']">Parceiro</a></li>
+                    <ul class="dropdown-menu" style="width: 300px;" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" [routerLink]="['/eventos']" routerLinkActive="rota-atual">Eventos</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/usuario']" routerLinkActive="rota-atual">Usuários/Cliente</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/local']" routerLinkActive="rota-atual">Local</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/parceiro']" routerLinkActive="rota-atual">Parceiro</a></li>
                         <!-- <li>
                             <hr class="dropdown-divider">
                         </li>
