@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Parceiro } from '../models/Parceiro';
+import { Parceiro } from '../models/parceiro';
 import { ParceiroService } from '../services/parceiro.service';
 import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
 
