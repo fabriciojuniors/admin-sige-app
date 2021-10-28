@@ -12,7 +12,7 @@ import { ToastMessageComponent } from '../shared/toast-message/toast-message.com
 })
 export class UsuarioComponent implements OnInit {
 
-  URL_RELATORIO = `${BASE_URL}/usuario`
+  URL_RELATORIO = `${BASE_URL}/relatorio/usuario`
 
   public proximo: boolean = false;
   paginasTotais: number;
