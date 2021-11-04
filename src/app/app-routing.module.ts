@@ -5,6 +5,7 @@ import { EventosComponent } from './eventos/eventos.component';
 import { LoginGuard } from './guards/login.guard';
 import { LocalComponent } from './local/local.component';
 import { LoginComponent } from './login/login.component';
+import { ParametrosComponent } from './parametros/parametros.component';
 import { ParceiroComponent } from './parceiro/parceiro.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: 'eventos',
     component: EventosComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'parametros',
+    component: ParametrosComponent,
     canActivate: [LoginGuard]
   }
 ];

@@ -29,7 +29,7 @@ export class EventosComponent implements OnInit {
       id: 0,
       rua: "",
       numero: "",
-      uf: "#",
+      uf: "SC",
       cidade: "",
       complemento: "",
       cep: ""
@@ -44,13 +44,13 @@ export class EventosComponent implements OnInit {
   parceiros: Parceiro[] = [];
   parceirosListagem = [];
   parceiroSelect = 0;
-
+  data = new Date().toISOString().slice(0, 10);
   evento: Eventos = {
     id: 0,
     nome: "",
     detalhes: "",
-    data: "",
-    hora: "",
+    data: this.data,
+    hora: "00:00",
     duracao: 0,
     local: this.local,
     parceiros: this.parceiros,
@@ -99,12 +99,13 @@ export class EventosComponent implements OnInit {
       telefone: ""
     }
     this.parceiros = [];
+    this.parceiroSelect = 0;
     this.evento = {
       id: 0,
       nome: "",
       detalhes: "",
-      data: "",
-      hora: "",
+      data: this.data,
+      hora: "00:00",
       duracao: 0,
       local: this.local,
       parceiros: this.parceiros,
@@ -156,13 +157,14 @@ export class EventosComponent implements OnInit {
   cadastrar() { }
 
   async salvar() {
+    
     this.showLoading = true;
 
     if (this.evento.hora.length <= 5) {
       this.evento.hora = `${this.evento.hora}:00`
     }
 
-    if (this.evento.parceiros.length == 0) {
+    if (!this.evento.parceiros || this.evento.parceiros.length == 0) {
       this.evento.parceiros = null;
     }
 
@@ -191,7 +193,6 @@ export class EventosComponent implements OnInit {
 
     this.eventosService.salvar(this.evento).toPromise()
       .then(res => {
-        this.getByPage(1);
         this.closeModal.nativeElement.click();
         this.toast.showToast("S", ["Salvo com sucesso."]);
       })
@@ -207,11 +208,12 @@ export class EventosComponent implements OnInit {
           erros = erros.split("\"").join("");
           erros = erros.split(":").join(": ");
           let errosA = erros.split(",");
-          this.toast.showToast("W", [errosA])
+          this.toast.showToast("W", errosA)
         }
       })
       .finally(() => {
         this.showLoading = false;
+        this.getByPage(1);
       });
 
   }
@@ -223,8 +225,6 @@ export class EventosComponent implements OnInit {
     this.showLoading = true;
     this.eventosService.getPage(pagina).toPromise()
       .then(res => {
-        console.log(res.content);
-
         this.eventos = res.content;
         this.proximo = !res.last;
         this.paginasTotais = res.totalPages;

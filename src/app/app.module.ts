@@ -14,6 +14,7 @@ import { LocalComponent } from './local/local.component';
 import { ParceiroComponent } from './parceiro/parceiro.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ParametrosComponent } from './parametros/parametros.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LocalComponent,
     ParceiroComponent,
     EventosComponent,
+    ParametrosComponent,
   
   ],
   imports: [
