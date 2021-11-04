@@ -13,6 +13,7 @@ import { ToastMessageComponent } from './shared/toast-message/toast-message.comp
 import { LocalComponent } from './local/local.component';
 import { ParceiroComponent } from './parceiro/parceiro.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import { EventosComponent } from './eventos/eventos.component';
     ToastMessageComponent,
     LocalComponent,
     ParceiroComponent,
-    EventosComponent
+    EventosComponent,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,4 +13,12 @@ export class EventosService {
   getPage(pagina: number): Observable<any>{
     return this.http.get(BASE_URL+"/evento/?pagina="+pagina);
   }
+
+  salvar(evento){
+    return this.http.post(`${BASE_URL}/evento`, evento);
+  }
+
+  excluir(id):Observable<any>{
+    return this.http.delete(BASE_URL+"/evento/"+id);
+  }
 }

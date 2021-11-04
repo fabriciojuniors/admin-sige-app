@@ -14,6 +14,10 @@ export class ParceiroService {
     return this.http.get(BASE_URL+"/parceiro/?pagina="+pagina);
   }
 
+  getAll(): Observable<any>{
+    return this.http.get(BASE_URL+"/parceiro/all");
+  }
+
   salvar(parceiro):Observable<any>{
     return this.http.post(BASE_URL+"/parceiro", parceiro);
   }

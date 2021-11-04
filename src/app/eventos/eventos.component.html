@@ -7,16 +7,16 @@
             <div class="row">
                 <div class="col-md-7">
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalEventos"
-                            (click)="cadastrar()">Novo Evento</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#modalEventos" (click)="cadastrar()">Novo Evento</button>
                         <div class="btn-group" role="group">
                             <a class="btn btn-success dropdown-toggle" href="#" id="btnGroupDrop1" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false"></a>
-                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="{{URL_RELATORIO}}" target="_blank">Emitir relatório</a>
-                          </div>
+                                data-bs-toggle="dropdown" aria-expanded="false"></a>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="{{URL_RELATORIO}}" target="_blank">Emitir relatório</a>
+                            </div>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
 
@@ -35,13 +35,25 @@
                         <tr>
                             <th scope="col">Código</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Data/Hora</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Hora</th>
                             <th scope="col">Local</th>
                             <th scope="col" style="text-align: center;">#</th>
                         </tr>
                     </thead>
                     <tbody>
-                       
+                        <tr *ngFor="let evento of eventos">
+                            <td> {{evento.id}} </td>
+                            <td> {{evento.nome}} </td>
+                            <td> {{evento.dataFormatada}}</td>
+                            <td> {{evento.hora}} </td>
+                            <td> {{evento.local.nome}} </td>
+                            <td style="text-align: center;">
+                                <i style="margin-right: 10px;" (click)="editar(evento)" data-bs-toggle="modal"
+                                    data-bs-target="#modalEventos" class="fas fa-pen"></i>
+                                <i class="fas fa-trash-alt" (click)="excluir(evento)"></i>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -83,7 +95,131 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h3>MODAL</h3>
+                <div class="collapse show" id="collapseDadosPessoais">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="id">Código</label>
+                                <input disabled type="text" class="form-control" id="id" [(ngModel)]="evento.id">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome" [(ngModel)]="evento.nome">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="valorIngresso">Valor do ingresso</label>
+                                <input type="number" name="valorIngresso" id="valorIngresso" class="form-control"
+                                    [(ngModel)]="evento.valorIngresso">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md form-group">
+                                <label for="detalhes">Detalhes</label>
+                                <textarea name="detalhes" id="detalhes" class="form-control" cols="30" rows="3"
+                                    [(ngModel)]="evento.detalhes"></textarea>
+                            </div>
+                        </div> <br>
+
+                        <!-- Local -->
+                        <p>
+                            <a data-bs-toggle="collapse" href="#collapseLocal" class="collapse-tittle" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-map-marker-alt"></i> Local <small
+                                    style="font-size: 10px;">(Adicionar)</small>
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseLocal">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="local">Local</label>
+                                        <select name="local" id="local" class="form-control" [(ngModel)]="evento.local.id">
+                                            <option value="0">Selecione</option>
+                                            <option *ngFor="let local of locaisListagem" [value]="local.id"> {{local.nome}} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="data">Data</label>
+                                        <input type="date" name="data" id="data" class="form-control" [(ngModel)]="evento.data">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="data">Hora</label>
+                                        <input type="time" name="hora" id="hora" class="form-control" [(ngModel)]="evento.hora">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="data">Duração (minutos)</label>
+                                        <input type="number" name="duracao" id="duracao" class="form-control"
+                                            [(ngModel)]="evento.duracao">
+                                    </div>
+                                </div>
+                            </div> <br>
+                        </div>
+                        <!-- Local -->
+
+                        <!-- Parceiros -->
+                        <p>
+                            <a data-bs-toggle="collapse" href="#collapseEndereco" class="collapse-tittle" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-users"></i> Parceiros <small
+                                    style="font-size: 10px;">(Adicionar)</small>
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseEndereco">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <label for="parceiro">Parceiros</label>
+                                         <select name="parceiro" id="parceiro" class="form-control" [(ngModel)]="parceiroSelect">
+                                            <option value="0">Selecione</option>
+                                            <option *ngFor="let p of parceirosListagem" [value]="p.id"> {{p.nome}} </option>
+                                        </select> 
+                                    </div>
+                                    <div class="col-md-3">
+                                        <br>
+                                        <button class="btn btn-success form-control" (click)="addParceiro()">Adicionar parceiro</button>
+                                    </div>
+                                </div> <br>
+                                <div>
+                                    <table class="table table-stripped">
+                                        <thead>
+                                            <th>Nome</th>
+                                            <th>#</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let p of parceiros">
+                                                <td> {{p.nome}} </td>
+                                                <td (click)="removeParceiro(p)"><i class="far fa-trash-alt"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> <br>
+                        </div>
+                        <!-- Parceiros -->
+
+                        <!-- Imagem -->
+                        <p>
+                            <a data-bs-toggle="collapse" href="#collapseImagem" class="collapse-tittle" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                <i class="far fa-image"></i> Imagem <small
+                                    style="font-size: 10px;">(Adicionar)</small>
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseImagem">
+                            <div class="card card-body">
+                                <div class="alert alert-warning" role="alert">
+                                    Em casos de edição do evento, caso a imagem não seja informada, será utilizada a imagem já registrada.
+                                  </div>
+                                <input (change)="converterImagem($event)" type="file" accept=".jpg, .jpeg, .png" name="imagem" id="imagem" class="form-control">
+                            </div> <br>
+                        </div>
+                        <!-- Imagem -->
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" (click)="cancelar()"
