@@ -112,7 +112,16 @@
                                 <label for="valorIngresso">Valor do ingresso</label>
                                 <input type="number" name="valorIngresso" id="valorIngresso" class="form-control"
                                     [(ngModel)]="evento.valorIngresso">
-                            </div>
+                            </div> <br> <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="gera_certificado"
+                                            id="gera_certificado" [(ngModel)]="evento.geraCertificado">
+                                        <label for="gera_certificado">Gerar certificado</label>
+                                    </div>
+                                </div>
+                            </div> <br>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
@@ -135,20 +144,24 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="local">Local</label>
-                                        <select name="local" id="local" class="form-control" [(ngModel)]="evento.local.id">
+                                        <select name="local" id="local" class="form-control"
+                                            [(ngModel)]="evento.local.id">
                                             <option value="0">Selecione</option>
-                                            <option *ngFor="let local of locaisListagem" [value]="local.id"> {{local.nome}} </option>
+                                            <option *ngFor="let local of locaisListagem" [value]="local.id">
+                                                {{local.nome}} </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="data">Data</label>
-                                        <input type="date" name="data" id="data" class="form-control" [(ngModel)]="evento.data">
+                                        <input type="date" name="data" id="data" class="form-control"
+                                            [(ngModel)]="evento.data">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="data">Hora</label>
-                                        <input type="time" name="hora" id="hora" class="form-control" [(ngModel)]="evento.hora">
+                                        <input type="time" name="hora" id="hora" class="form-control"
+                                            [(ngModel)]="evento.hora">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="data">Duração (minutos)</label>
@@ -173,14 +186,17 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         <label for="parceiro">Parceiros</label>
-                                         <select name="parceiro" id="parceiro" class="form-control" [(ngModel)]="parceiroSelect">
+                                        <select name="parceiro" id="parceiro" class="form-control"
+                                            [(ngModel)]="parceiroSelect">
                                             <option value="0">Selecione</option>
-                                            <option *ngFor="let p of parceirosListagem" [value]="p.id"> {{p.nome}} </option>
-                                        </select> 
+                                            <option *ngFor="let p of parceirosListagem" [value]="p.id"> {{p.nome}}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="col-md-3">
                                         <br>
-                                        <button class="btn btn-success form-control" (click)="addParceiro()">Adicionar parceiro</button>
+                                        <button class="btn btn-success form-control" (click)="addParceiro()">Adicionar
+                                            parceiro</button>
                                     </div>
                                 </div> <br>
                                 <div>
@@ -205,16 +221,17 @@
                         <p>
                             <a data-bs-toggle="collapse" href="#collapseImagem" class="collapse-tittle" role="button"
                                 aria-expanded="false" aria-controls="collapseExample">
-                                <i class="far fa-image"></i> Imagem <small
-                                    style="font-size: 10px;">(Adicionar)</small>
+                                <i class="far fa-image"></i> Imagem <small style="font-size: 10px;">(Adicionar)</small>
                             </a>
                         </p>
                         <div class="collapse" id="collapseImagem">
                             <div class="card card-body">
                                 <div class="alert alert-warning" role="alert">
-                                    Em casos de edição do evento, caso a imagem não seja informada, será utilizada a imagem já registrada.
-                                  </div>
-                                <input (change)="converterImagem($event)" type="file" accept=".jpg, .jpeg, .png" name="imagem" id="imagem" class="form-control">
+                                    Em casos de edição do evento, caso a imagem não seja informada, será utilizada a
+                                    imagem já registrada.
+                                </div>
+                                <input (change)="converterImagem($event)" type="file" accept=".jpg, .jpeg, .png"
+                                    name="imagem" id="imagem" class="form-control">
                             </div> <br>
                         </div>
                         <!-- Imagem -->

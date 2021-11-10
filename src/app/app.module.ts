@@ -15,6 +15,8 @@ import { ParceiroComponent } from './parceiro/parceiro.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ParametrosComponent } from './parametros/parametros.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { ParametrosComponent } from './parametros/parametros.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

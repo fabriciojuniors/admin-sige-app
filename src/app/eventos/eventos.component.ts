@@ -55,7 +55,8 @@ export class EventosComponent implements OnInit {
     local: this.local,
     parceiros: this.parceiros,
     valorIngresso: 0,
-    imagem64: ""
+    imagem64: "",
+    geraCertificado: false
   };
 
   showLoading = false;
@@ -110,7 +111,8 @@ export class EventosComponent implements OnInit {
       local: this.local,
       parceiros: this.parceiros,
       valorIngresso: 0,
-      imagem64: ""
+      imagem64: "",
+      geraCertificado: false
     };
   }
 
