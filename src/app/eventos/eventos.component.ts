@@ -188,9 +188,6 @@ export class EventosComponent implements OnInit {
           let errosA = erros.split(",");
           this.toast.showToast("W", [errosA])
         }
-      })
-      .finally(() => {
-        this.showLoading = false;
       });
 
     this.eventosService.salvar(this.evento).toPromise()
