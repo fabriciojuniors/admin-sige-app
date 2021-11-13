@@ -55,7 +55,6 @@ export class EventosComponent implements OnInit {
     local: this.local,
     parceiros: this.parceiros,
     valorIngresso: 0,
-    imagem64: "",
     geraCertificado: false
   };
 
@@ -78,7 +77,7 @@ export class EventosComponent implements OnInit {
     let reader = new FileReader();
     reader.readAsDataURL(file)
     reader.onload = () => {
-      this.evento.imagem64 = reader.result.toString();
+      //this.evento.imagem64 = reader.result.toString();
     }
   }
 
@@ -111,7 +110,6 @@ export class EventosComponent implements OnInit {
       local: this.local,
       parceiros: this.parceiros,
       valorIngresso: 0,
-      imagem64: "",
       geraCertificado: false
     };
   }
