@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ParametrosComponent } from './parametros/parametros.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AutorizarPagamentoComponent } from './autorizar-pagamento/autorizar-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { environment } from '../environments/environment';
     ParceiroComponent,
     EventosComponent,
     ParametrosComponent,
+    AutorizarPagamentoComponent,
   
   ],
   imports: [

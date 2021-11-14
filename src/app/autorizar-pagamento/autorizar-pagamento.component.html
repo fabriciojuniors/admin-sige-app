@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+<app-toast-message #toast></app-toast-message>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4>Autorizar pagamentos</h4>
+
+            <div class="alert alert-success" role="alert" *ngIf="!isLoading && carrinhos.length == 0">
+                Nenhum pagamento pendente de autorização!
+            </div>
+
+            <div class="text-center" *ngIf="isLoading">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+            </div>
+
+            <table class="table table-hover table-stripped" *ngIf="!isLoading && carrinhos.length > 0">
+                <thead>
+                    <th>Nº Carrinho</th>
+                    <th>Cliente</th>
+                    <th>Forma de pagamento</th>
+                    <th>Valor</th>
+                    <th style="text-align: center;">Ações</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let carrinho of carrinhos">
+                        <td>{{carrinho.id}}</td>
+                        <td>{{carrinho.usuario.nome}}</td>
+                        <td>{{carrinho.formaPagamento}}</td>
+                        <td>{{carrinho.valorTotal}}</td>
+                        <td style="text-align: center;">
+                            <i (click)="autorizar(carrinho)" class="fas fa-check-square" style="color: green; margin-right: 10px;" title="Autorizar pagamento"></i>
+                            <i (click)="negar(carrinho)" class="fas fa-times-circle" style="color: red;" title="Negar pagamento"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

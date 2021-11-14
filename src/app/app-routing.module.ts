@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AutorizarPagamentoComponent } from './autorizar-pagamento/autorizar-pagamento.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { LoginGuard } from './guards/login.guard';
@@ -42,6 +43,11 @@ const routes: Routes = [
   {
     path: 'parametros',
     component: ParametrosComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'autorizar-pagamento',
+    component: AutorizarPagamentoComponent,
     canActivate: [LoginGuard]
   }
 ];
