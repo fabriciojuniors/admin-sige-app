@@ -18,6 +18,7 @@ import { ParametrosComponent } from './parametros/parametros.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AutorizarPagamentoComponent } from './autorizar-pagamento/autorizar-pagamento.component';
+import { AcompanharEventosComponent } from './acompanhar-eventos/acompanhar-eventos.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AutorizarPagamentoComponent } from './autorizar-pagamento/autorizar-pag
     EventosComponent,
     ParametrosComponent,
     AutorizarPagamentoComponent,
+    AcompanharEventosComponent,
   
   ],
   imports: [

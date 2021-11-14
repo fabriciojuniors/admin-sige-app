@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AcompanharEventosComponent } from './acompanhar-eventos/acompanhar-eventos.component';
 import { AutorizarPagamentoComponent } from './autorizar-pagamento/autorizar-pagamento.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventosComponent } from './eventos/eventos.component';
@@ -48,6 +49,11 @@ const routes: Routes = [
   {
     path: 'autorizar-pagamento',
     component: AutorizarPagamentoComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'acompanhar-eventos',
+    component: AcompanharEventosComponent,
     canActivate: [LoginGuard]
   }
 ];
