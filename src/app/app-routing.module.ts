@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AcompanharEventosComponent } from './acompanhar-eventos/acompanhar-eventos.component';
 import { AutorizarPagamentoComponent } from './autorizar-pagamento/autorizar-pagamento.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmitirCertificadoComponent } from './emitir-certificado/emitir-certificado.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { LoginGuard } from './guards/login.guard';
 import { LocalComponent } from './local/local.component';
@@ -54,6 +55,11 @@ const routes: Routes = [
   {
     path: 'acompanhar-eventos',
     component: AcompanharEventosComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'emitir-certificado',
+    component: EmitirCertificadoComponent,
     canActivate: [LoginGuard]
   }
 ];

@@ -19,6 +19,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AutorizarPagamentoComponent } from './autorizar-pagamento/autorizar-pagamento.component';
 import { AcompanharEventosComponent } from './acompanhar-eventos/acompanhar-eventos.component';
+import { EmitirCertificadoComponent } from './emitir-certificado/emitir-certificado.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AcompanharEventosComponent } from './acompanhar-eventos/acompanhar-even
     ParametrosComponent,
     AutorizarPagamentoComponent,
     AcompanharEventosComponent,
+    EmitirCertificadoComponent,
   
   ],
   imports: [
