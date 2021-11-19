@@ -21,4 +21,8 @@ export class EventosService {
   excluir(id):Observable<any>{
     return this.http.delete(BASE_URL+"/evento/"+id);
   }
+
+  getAll():Observable<any>{
+    return this.http.get(`${BASE_URL}/evento/all`)
+  }
 }
