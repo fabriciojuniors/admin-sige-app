@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BASE_URL } from '../app.component';
-import { Eventos } from '../models/eventos';
+import { ClassificacaoIndicativa, Eventos } from '../models/eventos';
 import { EventosService } from '../services/eventos.service';
 import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
 import { Local } from '../models/local';
@@ -55,7 +55,8 @@ export class EventosComponent implements OnInit {
     local: this.local,
     parceiros: this.parceiros,
     valorIngresso: 0,
-    geraCertificado: false
+    geraCertificado: false,
+    classificacaoIndicativa: null
   };
 
   showLoading = false;
@@ -110,7 +111,8 @@ export class EventosComponent implements OnInit {
       local: this.local,
       parceiros: this.parceiros,
       valorIngresso: 0,
-      geraCertificado: false
+      geraCertificado: false,
+      classificacaoIndicativa: null
     };
   }
 

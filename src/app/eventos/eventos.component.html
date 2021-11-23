@@ -105,11 +105,24 @@
                                     [(ngModel)]="evento.valorIngresso">
                             </div> <br> <br>
                             <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="classificacao">Classificação Indicativa</label>
+                                        <select class="form-control" name="classificacao" id="classificacao" [(ngModel)]="evento.classificacaoIndicativa">
+                                            <option value="L" selected>Livre</option>
+                                            <option value="DEZ">+10 anos</option>
+                                            <option value="DOZE">+12 anos</option>
+                                            <option value="QUATORZE">+14 anos</option>
+                                            <option value="DEZESSEIS">+16 anos</option>
+                                            <option value="DEZOITO">+18 anos</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
-                                    <div class="form-check">
+                                    <div class="form-check"> <br>
+                                        <label for="gera_certificado">Gerar certificado</label>
                                         <input class="form-check-input" type="checkbox" name="gera_certificado"
                                             id="gera_certificado" [(ngModel)]="evento.geraCertificado">
-                                        <label for="gera_certificado">Gerar certificado</label>
                                     </div>
                                 </div>
                             </div> <br>
